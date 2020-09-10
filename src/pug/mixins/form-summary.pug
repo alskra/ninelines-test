@@ -1,0 +1,131 @@
+mixin form-summary()
+	-
+		const fields = [
+			{
+				name: 'name',
+				value: 'Александр',
+				placeholder: 'Имя'
+			},
+			{
+				name: 'birthday',
+				value: '21.05.1991',
+				placeholder: 'Дата рождения'
+			},
+			{
+				name: 'location',
+				value: 'Волгоград',
+				placeholder: 'Город'
+			},
+			{
+				name: 'contacts',
+				value: 'krasnoyurchenko.a.s@gmail.com',
+				placeholder: 'Контактные данные'
+			}
+		];
+
+		const getScoreValue = (ratio = 1) => Math.round(ratio * 59.7);
+
+		const checkboxes = [
+			{
+				label: 'HTML5',
+				value: getScoreValue(),
+				checked: true
+			},
+			{
+				label: 'CSS3',
+				value: getScoreValue(),
+				checked: true
+			},
+			{
+				label: 'БЭМ',
+				value: getScoreValue(1.2),
+				checked: true
+			},
+			{
+				label: 'SASS',
+				value: getScoreValue(1.2),
+				checked: true
+			},
+			{
+				label: 'LESS',
+				value: getScoreValue(1.2),
+				checked: true
+			},
+			{
+				label: 'Gulp',
+				value: getScoreValue(1.4),
+				checked: true
+			},
+			{
+				label: 'VanillaJS',
+				value: getScoreValue(2.2),
+				checked: true
+			},
+			{
+				label: 'Angular',
+				value: getScoreValue(2.1)
+			},
+			{
+				label: 'jQuery',
+				value: getScoreValue(1.6),
+				checked: true
+			},
+			{
+				label: 'Git',
+				value: getScoreValue(1.2),
+				checked: true
+			},
+			{
+				label: 'Foundation',
+				value: getScoreValue(1.3),
+				checked: true
+			},
+			{
+				label: 'Bootstrap',
+				value: getScoreValue(1.3),
+				checked: true
+			},
+		];
+
+	+b.FORM.form-summary&attributes(attributes)
+		+e.section
+			+e.grid
+				+e.cell--photo
+					+e.photo-box
+						+e.IMG.photo(src="images/photo.jpg" style={'background-image': 'url(images/photo.jpg)'})
+
+				+e.cell--fields
+					each field in fields
+						+e.INPUT.field&attributes(field)
+
+		+e.section
+			+e.title
+				| Навыки
+
+			+e.checkboxes
+				each checkbox in checkboxes
+					+e.LABEL.checkbox
+						+e.INPUT.checkbox-input.visually-hidden(
+							type="checkbox"
+							name="skills"
+							value=checkbox.value
+							checked=checkbox.checked
+						)
+						+e.checkbox-fake
+							+svg('check').checkbox-icon
+
+						+e.checkbox-label
+							| !{checkbox.label}
+
+		+e.section--score
+			+e.score-box
+				+e.grid
+					+e.cell--meter
+						+e.meter
+							include ../../images/meter.svg
+
+					+e.cell--score
+						+e.title--score
+							| Мой уровень владения  Java Script
+
+						+e.score

@@ -1,0 +1,13 @@
+extends pug/base
+
+prepend vars
+	-
+		title = 'Test';
+
+append vars
+	-
+		baseDir = '';
+		body.classList.push('page');
+
+block content
+	+form-summary().page__form-summary

@@ -1,0 +1,10 @@
+.page {
+	display: flex;
+	flex-flow: column;
+	font-family: $font-family-roboto;
+	background: #f0f0f0;
+
+	&__form-summary {
+		margin: auto;
+	}
+}
